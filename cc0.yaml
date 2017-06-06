@@ -1,15 +1,6 @@
-passwd:
-  users:
-    - name: core
-      ssh_authorized_keys:
+#cloud-config
+
+users:
+  - name: core
+    ssh_authorized_keys:
         - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6gl06SZ0TzA2iJjKeo5bK+ksdRP0okJfDP3JArd8YO6Ou3tg9XXCoBtaG6PHzL4JekcVh+KfFeu3O6VOTBTG7KxjZWniBGAZuoO9SCXA6R1jyxy++igMdgjLntM+Fnp/Kq5f/ZRME+znGwXi3PMLS87PGUThH9M7SRT03Whq1t1IsWJIDlFWzcjr5dY04E67EsEk0Gjp9cKER1M1SiCwAF5rHIWvoyEB2mbPldc5mg3n0dN/6zVGhaUG++fhnLR3blxadJLTJkwPZyTMr+HhG9SMlw7yUyMa1RBu5OwsECcNXEzuudM5MSoyuQSDuDe9LOhS1PwnnRiwgIeQPogr9 
-etcd:
-  # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
-  # specify the initial size of your cluster with ?size=X
-  discovery: https://discovery.etcd.io/<token>
-  advertise_client_urls: http://<PEER_ADDRESS>:2379,http://<PEER_ADDRESS>:4001
-  initial_advertise_peer_urls: http://<PEER_ADDRESS>:2380
-  # listen on both the official ports and the legacy ports
-  # legacy ports can be omitted if your application doesn't depend on them
-  listen_client_urls: http://0.0.0.0:2379,http://0.0.0.0:4001
-  listen_peer_urls: http://<PEER_ADDRESS>:2380
